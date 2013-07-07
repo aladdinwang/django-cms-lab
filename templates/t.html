@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh" >
+<head>
+<title>修改 picture | Django 站点管理员</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/forms.css" />
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/static/admin/css/ie.css" /><![endif]-->
+
+<script type="text/javascript">window.__admin_media_prefix__ = "/static/admin/";</script>
+
+<script type="text/javascript" src="/static/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/cms/js/csrf.js"></script>
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+
+<script type="text/javascript" src="/static/admin/js/core.js"></script>
+<script type="text/javascript" src="/static/admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="/static/admin/js/actions.js"></script>
+
+<script type="text/javascript" src="/static/cms/js/libs/classy.min.js"></script>
+<script type="text/javascript" src="/static/cms/js/plugins/cms.setup.js"></script>
+<script type="text/javascript" src="/static/cms/js/plugins/cms.base.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+(function($) {
+	function runOnLoad(f) {
+		if (runOnLoad.loaded){
+			f();
+		}else{
+			runOnLoad.funcs.push(f);
+		}
+	}
+	runOnLoad.funcs = [];
+	runOnLoad.loaded = false;
+	runOnLoad.run = function() {
+		if (runOnLoad.loaded) return;
+	
+		for(var i = 0; i < runOnLoad.funcs.length; i++) {
+			try { 
+				runOnLoad.funcs[i](); 
+			}catch(e) { }
+		}
+		runOnLoad.loaded = true;
+		delete runOnLoad.funcs;
+		delete runOnLoad.run;
+	};
+	if (window.addEventListener){
+		window.addEventListener("load", runOnLoad.run, false);
+	}else if (window.attachEvent){
+		window.attachEvent("onload", runOnLoad.run);
+	}else{
+		window.onload = runOnLoad.run;
+	}
+	runOnLoad(function(){
+		parent.setiframeheight($('body').height()+20, 105);
+	});
+	$(document).ready(function(){
+		$("a.add-another,a.related-lookup").each(function(i, sign){
+			var href = $(sign).attr("href");
+			if (href.substr(0,2) == ".."){
+				href = "../../"+href;
+				$(sign).attr("href", href); 
+			}
+		});
+	});
+})(window.CMS.$);
+//]]>
+</script>
+
+
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class="popup picture-picture change-form">
+
+<!-- Container -->
+<div id="container">
+
+    
+
+    
+        
+    
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        
+        <h2>图片</h2>
+        <div id="content-main">
+
+<form enctype="multipart/form-data" action="" method="post" id="picture_form"><input type='hidden' name='csrfmiddlewaretoken' value='y9SHTvzNwsu1kCpccAcXnnrnWgQLjWJY' />
+<div>
+<input type="hidden" name="_popup" value="1" />
+
+
+
+
+
+  <fieldset class="module aligned ">
+    
+    
+    
+        <div class="form-row field-image">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_image" class="required">图像:</label>
+                        
+                            <p class="file-upload">目前: <a href="/media/cms_page_media/22/Firefox20130607082930438_1.png">cms_page_media/22/Firefox20130607082930438_1.png</a> <br />修改: <input id="id_image" name="image" type="file" /></p>
+                        
+                    
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-url">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_url">链接:</label>
+                        
+                            <input class="vTextField" id="id_url" maxlength="255" name="url" type="text" />
+                        
+                    
+                    
+                        <p class="help">If present, clicking on image will take user to link.</p>
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-page_link">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_page_link">页面:</label>
+                        
+                            <select id="id_page_link" name="page_link">
+<option value="" selected="selected">---------</option>
+<option value="17"></option>
+<option value="20"></option>
+<option value="18"></option>
+<option value="21"></option>
+<option value="19"></option>
+<option value="22"></option>
+<option value="23"></option>
+</select><a href="/admin/cms/page/add/" class="add-another" id="add_id_page_link" onclick="return showAddAnotherPopup(this);"> <img src="/static/admin/img/icon_addlink.gif" width="10" height="10" alt="添加另一个"/></a>
+                        
+                    
+                    
+                        <p class="help">If present, clicking on image will take user         to specified page.</p>
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-alt">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_alt">可选文本:</label>
+                        
+                            <input class="vTextField" id="id_alt" maxlength="255" name="alt" type="text" />
+                        
+                    
+                    
+                        <p class="help">Specifies an alternate text for an image, if         the image cannot be displayed.<br />Is also used by search engines to         classify the image.</p>
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-longdesc">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_longdesc">详细描述:</label>
+                        
+                            <input class="vTextField" id="id_longdesc" maxlength="255" name="longdesc" type="text" />
+                        
+                    
+                    
+                        <p class="help">When user hovers above picture,        this text will appear in a popup.</p>
+                    
+                </div>
+            
+        </div>
+    
+        <div class="form-row field-float">
+            
+            
+                <div>
+                    
+                    
+                        <label for="id_float">位置:</label>
+                        
+                            <select id="id_float" name="float">
+<option value="" selected="selected">---------</option>
+<option value="left">左</option>
+<option value="right">右</option>
+<option value="center">中心</option>
+</select>
+                        
+                    
+                    
+                        <p class="help">Move image left, right or center.</p>
+                    
+                </div>
+            
+        </div>
+    
+</fieldset>
+
+
+
+ 
+
+ 
+
+ 
+
+
+ 
+
+ 
+
+
+<script type="text/javascript">
+(function($) {
+    var field;
+
+
+})(django.jQuery);
+</script>
+
+ 
+</div>
+<span class="plugin-submit-row" style="overflow: auto;">
+	<input type="submit" style="float:none;" name="_save" class="default" value="保存" />
+	<input type="submit" style="margin-left: 8px;" value="取消" name="_cancel" class="cancel-btn">
+</span>
+</form>
+
+</div>
+
+        
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>

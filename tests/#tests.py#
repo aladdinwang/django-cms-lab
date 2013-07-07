@@ -1,0 +1,27 @@
+"""
+This file demonstrates writing tests using the unittest module. These will pass
+when you run "manage.py test".
+
+Replace this with more appropriate tests for your application.
+"""
+import os
+from django.test import TestCase
+from django.template.loader import get_template
+from django.template import Template, Context
+#from django.shortcuts import render
+
+
+class SimpleTest(TestCase):
+    def test_basic_addition(self):
+        """
+        Tests that 1 + 1 always equals 2.
+        """
+        self.assertEqual(1 + 1, 2)
+
+
+def test_asy():
+    t = get_template('generate_png.asy')
+    content = t.render(Context({'tips': 'Hello world'}))
+    from subprocess import Popen, PIP
+    p = Popen(['asy', '-o', 'world'], stdin=PIPE)
+    print p.communicate(input=content)[0]

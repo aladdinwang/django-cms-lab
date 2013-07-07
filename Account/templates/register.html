@@ -1,0 +1,12 @@
+<html>
+  <body>
+    {{msg}}
+    <form action="/register/" method="post">
+      <p> Name: <input type="text" value="{{user_name}}" name="user_name"/> </p>
+      <p> Psw: <input type="password" value="{{passwd}}" name="passwd"/>  </p>
+      <p> Psw Again: <input type="password" value="{{passwd2}}" name="passwd2"/> </p>
+      <input type="submit" value="register"/>
+      <input type="button" value="login" onclick="javascript:location='/login/'"/>
+    </form>
+  </body>
+</html>

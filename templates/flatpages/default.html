@@ -1,0 +1,9 @@
+{% if not error %}
+  {% if snippet %}
+    {{flatpage.content}}
+  {% else %}
+    {{flatpage.snippet}}
+  {% endif %}
+{% else %}
+  {{error}}
+{% endif %}

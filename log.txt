@@ -1,0 +1,112 @@
+protocalV1>>>slot_SendLoginMsg
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>New User[IPMSG_BR_ENTRY]:debian
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>Ansentry User[IPMSG_ANSENTRY]:debian
+protocalV1>>>slot_SendLoginMsg
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>New User[IPMSG_BR_ENTRY]:debian
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>Ansentry User[IPMSG_ANSENTRY]:debian
+protocalV1>>>slot_SendLoginMsg
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>New User[IPMSG_BR_ENTRY]:debian
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>Ansentry User[IPMSG_ANSENTRY]:debian
+protocalV1>>>slot_SendLoginMsg
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>New User[IPMSG_BR_ENTRY]:debian
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>Ansentry User[IPMSG_ANSENTRY]:debian
+protocalV1>>>slot_SendLoginMsg
+protocalV1>>>slot_SendLoginMsg
+UDPNetwork###7Unable to send a message
+Core>>>7Unable to send a message
+protocalV1>>>slot_SendLoginMsg
+UDPNetwork###7Unable to send a message
+Core>>>7Unable to send a message
+protocalV1>>>slot_SendLoginMsg
+UDPNetwork###7Unable to send a message
+Core>>>7Unable to send a message
+protocalV1>>>slot_SendLoginMsg
+UDPNetwork###7Unable to send a message
+Core>>>7Unable to send a message
+protocalV1>>>slot_SendLoginMsg
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>New User[IPMSG_BR_ENTRY]:debian
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>Ansentry User[IPMSG_ANSENTRY]:debian
+protocalV1>>>slot_SendLoginMsg
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>New User[IPMSG_BR_ENTRY]:debian
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>Ansentry User[IPMSG_ANSENTRY]:debian
+protocalV1>>>slot_SendLoginMsg
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>New User[IPMSG_BR_ENTRY]:debian
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>Ansentry User[IPMSG_ANSENTRY]:debian
+protocalV1>>>slot_SendLoginMsg
+protocalV1>>>slot_SendLoginMsg
+UDPNetwork###7Unable to send a message
+Core>>>7Unable to send a message
+protocalV1>>>slot_SendLoginMsg
+UDPNetwork###7Unable to send a message
+Core>>>7Unable to send a message
+protocalV1>>>slot_SendLoginMsg
+UDPNetwork###7Unable to send a message
+Core>>>7Unable to send a message
+protocalV1>>>slot_SendLoginMsg
+UDPNetwork###7Unable to send a message
+Core>>>7Unable to send a message
+protocalV1>>>slot_SendLoginMsg
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>New User[IPMSG_BR_ENTRY]:debian
+UserListView>>>debian
+UserListView>>>debian,172.16.3.13
+protocalV1>>>Ansentry User[IPMSG_ANSENTRY]:debian
+UserListView>>>王恩俊
+UserListView>>>王恩俊,172.16.3.12
+protocalV1>>>New User[IPMSG_BR_ENTRY]:lenovo
+UserListView>>>王恩俊
+UserListView>>>王恩俊,172.16.3.12
+protocalV1>>>New User[IPMSG_BR_ENTRY]:lenovo
+UserListView>>>王恩俊
+UserListView>>>王恩俊,172.16.3.12
+protocalV1>>>New User[IPMSG_BR_ENTRY]:lenovo
+UserListView>>>王恩俊
+UserListView>>>王恩俊,172.16.3.12
+protocalV1>>>New User[IPMSG_BR_ENTRY]:lenovo
+UserListView>>>centos-aladdin
+UserListView>>>centos-aladdin,172.16.3.116
+protocalV1>>>New User[IPMSG_BR_ENTRY]:centos-aladdin
+FileTransList>>>add send item
+FileTransList>>>items count:1
+protocalV1>>>Get Message [IPMSG_RECVMSG] from:centos-aladdin
+FileSendClient>>>构造
+FileSendClient>>>Recv Data
+FileSendClient>>>get file:1:1371690746:centos-aladdin:centos-aladdin:96:51c256c1:0:0:
+FileSendClient>>>Send file:/home/aladdin/install-tl-unx.tar.gz
+FileSendClient>>>SendFile:/home/aladdin/install-tl-unx.tar.gz
+FileSendClient>>>SendFile Over.....
+FileSendClient>>>onDis send success!
+FileSendClient>>>~FileSendClient
+protocalV1>>>slot_SendCanceled
+protocalV1>>>SEND IPMSG_CANCELSEND
+protocalV1>>>slot_SendCanceled
+protocalV1>>>SEND IPMSG_CANCELSEND

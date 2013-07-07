@@ -1,0 +1,5 @@
+{%  templatetag openblock %} if newslist {% templatetag closeblock %}
+  {% templatetag openblock %} for item in newslist {% templatetag closeblock%}
+            <li><a href="{%templatetag openvariable%}item.content{%templatetag closevariable%}">{%templatetag openvariable%}item.title{%templatetag closevariable%}</a></li>
+  {% templatetag openblock %} endfor {% templatetag closeblock %}
+{%  templatetag openblock %} endif {% templatetag closeblock %}
