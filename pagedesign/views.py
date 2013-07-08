@@ -22,6 +22,7 @@ class MasterPageSelectWizard( SessionWizardView ):
                 form.fields['wrongfield'] = forms.CharField( label = 'Something wrong' )
             else:
                 form_class = RowsInfoForm
+                form_class.base_fields.clear()
                 for i in range( 1, count + 1 ):
                     name = 'row' + str( i )
                     label = 'Row ' + str( i )

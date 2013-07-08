@@ -1,0 +1,140 @@
+This is a help file covering the basics of how to make simple changes to the News-Print design.
+
+
+***************
+Color Themes 
+***************
+Q: How do I use the sepia theme instead of the black & white?
+
+A: Open up your HTML for your page, and near the top find the following bit of code:
+
+<link rel="stylesheet" type="text/css" href="main.css" />
+<link rel="stylesheet" type="text/css" href="bw.css" />
+<link rel="alternate stylesheet" type="text/css" href="sepia.css" title="Sepia" />
+
+Change the href in the second line to: href="sepia.css" instead.
+
+If you want to offer the black & white design as an alternate style, you can change the href of the third line to say href="bw.css" and the title to say something like title="Grayscale" instead. If you don't want to offer an alternate style at all, remove the third line entirely.
+
+-------------------------------
+
+Q: How do I create my own color theme?
+
+A: Make a copy of either the bw.css or sepia.css and rename it for your new theme. 
+
+Follow the directions for how to use the sepia theme in the above question, except instead of changing the second line to say sepia.css, provide the name of your new theme file you just made. 
+
+Then open up your new css file, and read the comments inside the file. The comments will tell you what each color value does, and all you have to do is change the numerical color value past the # sign to reflect the color you want. If you don't know what colors to use, I suggest trying out the following places:
+http://www.visibone.com/colorlab/
+http://www.webwhirlers.com/colors/
+http://www.w3schools.com/html/html_colors.asp
+
+
+-------------------------------
+
+Q: If I want to change a background color, what format should my color be in?
+
+A: It should look like any one of the following:
+background-color: #ff0 ;
+background-color: #ffff00 ;
+background-color: rgb(255,255,0) ;
+
+--------------------------------
+
+Q: How do I create a printable version of sub-pages?
+
+A: You don't have to, it's already done. If you look at the code in the top of the sub pages, you'll see this:
+
+<link rel="stylesheet" type="text/css" href="print.css" title="Printable"  media="print" />
+
+That line makes it so that if someone prints from their browser, it will automatically use the print.css layout style to print. You can take a look at the included print.html file to see an example of how the print layout looks. If you just make sure that line is included in each sub page, you'll have a print version come out for them when they print.
+
+--------------------------------
+
+******************
+Working with Links 
+******************
+
+Q: How do I add one of those 'continue reading' links like on the first page?
+
+A: You have to add the text: class="more" to the link. Ex: 
+
+<a href="#" class="more" title="Continue reading this page.">[Continue Reading]</a>
+
+--------------------------------
+
+Q: What are those two links in the top left corner of the page?
+
+A: Those are skiplinks for accessibility. They are named that because they allow a user to 'skip' to a section of the page. These are a huge help for people who are dependent on using a text only browser (often due to eyesight limitations). I suggest you leave them there.
+
+******************
+Fonts
+******************
+
+Q: How do I change the font used in the page?
+
+A: The font is the same through the entire page in this design. You'll only need to change it in one place in order for it to change the entire design. Open up main.css and find the following line near the top:
+
+body {font-size: 76%; font-family: 'Courier New', serif; margin:0 auto; width: 95%;}
+
+That part of that line that is important is the font-family. You can change that easily by putting in a different name. For example, you could change it to:
+
+body {font-size: 76%; font-family: 'Times New Roman', serif; margin:0 auto; width: 95%;}
+
+If you need help finding a good looking font name, I suggest you take a look at TypeTester ( http://typetester.maratz.com/ )
+
+--------------------------------
+
+******************
+The Sidebar
+******************
+
+Q: How do I make the background grey some sections of the sidebar, but not all?
+
+A: You can simply add the class="alt" to the li of that section. For an example of how that looks, here is a code bit using it:
+
+<li class="alt">
+   <h2>Advertising</h2>
+   <p>This is very easy to use if you want to create a sidebar where each section has an alternating background color.</p>
+</li>
+
+--------------------------------
+
+******************
+Images
+******************
+
+Q: How do I show an image to the left or right of text?
+
+A: You need to add a class to the image, that class should say either class="left" or class="right", depending on what you need it to do. Ex:
+
+<p><img src="placeholder.gif" alt="A placeholder." class="right" />This text will be to the LEFT of the image.</p>
+
+OR
+
+<p><img src="placeholder.gif" alt="A placeholder." class="left" />This text will be to the RIGHT of the image.</p>
+
+--------------------------------
+
+******************
+MORE HELP
+******************
+
+Q: I'm having a real problem with something, can you help?
+
+A: Honestly, it depends. If you've really given it an effort and still can't get it working, you can email me ( TxNicole@gmail.com ) and I'll try to point you in the right direction. Please don't email me asking me to actually create your entire site for you - I charge for that sort of thing ;) But if you just need a little help with a couple of things, feel free to ask. Also, keep in mind that I'm often busy and may not get back to you in a normal amount of time.
+
+--------------------------------
+
+Q: I found an error/problem in the design.
+
+A: Great! Well, maybe great isn't the best word, but I'd rather know about problems than not know. At least if I know it's there I can fix it :) Please email me ( TxNicole@gmail.com ) if you find errors.
+
+--------------------------------
+
+Q: I want to port this design to a CMS/Blogging platform theme. Is that allowed?
+
+A: Absolutely. The Creative Commons Attribution 2.5 License still applies, so you must indicate somewhere in the design that it was based on work by myself, and keep a live link to www.WebsiteStyle.com in there. However, that's the only restriction, you can do whatever you want with the layout. 
+
+If you do decide to port the design to another platform, please let me know :) I'll give you a link back to the ported design so that people can find it easily from my main page for the theme.
+

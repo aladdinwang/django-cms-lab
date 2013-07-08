@@ -263,9 +263,7 @@ INSTALLED_APPS = (
     'cms.plugins.picture',
     #'cms.plugins.teaser',
     'cms.plugins.text',
-    'cms.plugins.snippet',
-    'imsto',
-    'imsto.django',
+    #'cms.plugins.snippet'
     'reversion',
     'Account',
     'demo',
