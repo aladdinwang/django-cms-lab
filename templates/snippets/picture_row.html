@@ -1,0 +1,16 @@
+{% load cms_tags %}
+{% load i18n %}
+
+<p class="bodytext">
+{% for picture in picture_cols %}
+  {{ picture.placeholder }}
+{% endfor %}
+</p>
+
+<p class="bodytext">
+{% for picture in picture_cols %}
+  <span class="spantext">
+    <a href="{{ picture.url }}" target="_blank">{{ picture.name }}</a>
+  </span>
+{% endfor %}
+</p>
