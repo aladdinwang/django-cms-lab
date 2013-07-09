@@ -50,6 +50,7 @@ class MasterPageSelectWizard( SessionWizardView ):
                 }
                 picture_id += 1
                 
+
                 picture[ 'placeholder' ] = mark_safe( "{%" + placeholder_template % substitution \
                     + "%}" )
                 picture[ 'url' ] = '#'
@@ -58,6 +59,7 @@ class MasterPageSelectWizard( SessionWizardView ):
                 
             picture_rows.append( picture_cols )
         
+
         template = render_to_string( self.base_template_name, Context( { 'picture_rows': picture_rows } ) )
         template =  mark_safe( template )
         
