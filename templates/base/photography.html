@@ -2,6 +2,7 @@
 {% load flatpages %}
 {% load staticfiles %}
 {% load i18n %}
+{% get_flatpage "/pages/photography/loadtags/" %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -23,7 +24,7 @@
 
 {% block row_sets  %}
   {% for picture_cols in picture_rows %}
-    {% include "snippets/picture_row.html "%}
+    {% include "snippets/picture_row.html" %}
   {% endfor %}
 {% endblock row_sets %}
 

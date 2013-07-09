@@ -1,12 +1,25 @@
 # Create your views here.
+from utils.conf import update_tuple_list
+
+from cms.utils.conf import get_extend_cfg, get_cms_templates
+#from cms.models import Page
+from pagedesign.forms import MasterPageSelectForm, RowsInfoForm
+
 from django.http import HttpResponse
+from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.contrib.formtools.wizard.views import SessionWizardView
+from django.http import HttpResponse, HttpResponseRedirect
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.template.loader import get_template, render_to_string
 from django.utils.safestring import mark_safe
 from django.template import Context
-from pagedesign.forms import MasterPageSelectForm, RowsInfoForm
+
+from configobj import ConfigObj, unrepr
+
+import os
+
 
 class MasterPageSelectWizard( SessionWizardView ):
     picture_row_snippet_choices = (
@@ -15,18 +28,19 @@ class MasterPageSelectWizard( SessionWizardView ):
         )
     base_template_name = "base/photography.html"
     def done( self, form_list, **kwargs ):
-        placeholder_template = " placeholder %(placeholder_name)s group=image tips=%(placeholder_tips)s " \
+        placeholder_template = " placeholder %(placeholder_name)s group=image tips=\"%(placeholder_tips)s\" " \
             "width=216 height=168 "
         cleaned_data = self.get_all_cleaned_data()
         #print cleaned_data
         row_count = int( cleaned_data.get( 'rows', 0 ) )
         picture_rows = []
         picture_id = 1
-
+        col_ids = []
         for row in range( 1, row_count + 1 ):
             key = 'row' + str( row )
             # may use get
             picture_cols = []
+            col_ids.append( cleaned_data[ key] )
             col_count = int( cleaned_data[ key ] )
             for col in range( 0, col_count  ):
                 picture = {}
@@ -35,17 +49,43 @@ class MasterPageSelectWizard( SessionWizardView ):
                     'placeholder_tips':  "Design for photo%s" % ( str( picture_id ) ),
                 }
                 picture_id += 1
-                picture[ 'placeholder' ] = placeholder_template % substitution
+                
+                picture[ 'placeholder' ] = mark_safe( "{%" + placeholder_template % substitution \
+                    + "%}" )
                 picture[ 'url' ] = '#'
                 picture[ 'name' ] = substitution[ 'placeholder_name' ]
                 picture_cols.append( picture )
                 
             picture_rows.append( picture_cols )
         
-        
         template = render_to_string( self.base_template_name, Context( { 'picture_rows': picture_rows } ) )
-        print mark_safe( template )
-        return HttpResponse( "OK"  )
+        template =  mark_safe( template )
+        
+        #prepare template_name
+        template_name_template = "photography_%s"
+        for i in range( 0, row_count ):
+            template_name_template += "_%s"
+            ids = tuple( [ unicode(row_count) ] +  col_ids ) 
+        template_name = template_name_template % ids
+        
+        templates_dir = os.path.join( settings.PROJECT_PATH, 'templates')
+        template_path = os.path.join( templates_dir, template_name )
+        print template_path
+        
+        fp = open( template_path + '.html', 'w' )
+        fp.write( template )
+        fp.close()
+
+        # setting the config file
+        config = get_extend_cfg()
+        cms_templates = unrepr( config[ 'CMS_TEMPLATES' ] )
+        
+        update_tuple_list( cms_templates, template_path  + ".html", template_name )
+        config[ 'CMS_TEMPLATES' ] = repr( cms_templates )
+        config.write()
+
+        page_addview_url = reverse('admin:cms_page_add')
+        return HttpResponseRedirect( page_addview_url  )
     def get_form( self, step = None, data = None, files = None ):
         if '1' == step:
             raw_data = self.storage.get_step_data( '0' )
@@ -65,3 +105,5 @@ class MasterPageSelectWizard( SessionWizardView ):
 
         form = super( MasterPageSelectWizard, self ).get_form( step, data, files )
         return form
+
+ 
