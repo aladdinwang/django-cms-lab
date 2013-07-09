@@ -35,14 +35,16 @@ class MasterPageSelectWizard( SessionWizardView ):
                     'placeholder_tips':  "Design for photo%s" % ( str( picture_id ) ),
                 }
                 picture_id += 1
-                picture[ 'placeholder' ] = placeholder_template % substitution
+                
+                picture[ 'placeholder' ] = "{%" + placeholder_template % substitution \
+                    + "%}"
                 picture[ 'url' ] = '#'
                 picture[ 'name' ] = substitution[ 'placeholder_name' ]
                 picture_cols.append( picture )
                 
             picture_rows.append( picture_cols )
         
-        
+        #template = get_template( self.base_template_name )
         template = render_to_string( self.base_template_name, Context( { 'picture_rows': picture_rows } ) )
         print mark_safe( template )
         return HttpResponse( "OK"  )
