@@ -3,11 +3,7 @@
 
 
 
-  {% load cms_tags %}
-{% load flatpages %}
-{% load staticfiles %}
-{% load i18n %}
-
+  错误: /pages/photography/loadtags/
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,22 +20,34 @@
 <div id="header">
 <div id="headertitle"><span>Your Name</span><span class="boldtitle">Photography</span></div>
 <div id="links"><span><a href="{ %static 'photos/index.html' %}">
-  {% get_flatpage "/pages/photography/home/" %}
+  
+    {{home}}
+  
 
 </a></span> | <span><a href="/static/photos/features.html">
-  {% get_flatpage "/pages/photography/featured-pages/" %}
+  
+    {{feature}}
+  
 
 </a></span> | <span><a href="/static/photos/photography.html">
-  {% get_flatpage "/pages/photography/photography-link/" %}
+  
+    {{photography}}
+  
 
 </a></span> | <span><a href="#">
-  {% get_flatpage "/pages/photography/store/" %}
+  
+    {{store}}
+  
 
 </a></span> | <span><a href="/static/photos/services.html">
-  {% get_flatpage "/pages/photography/service/" %}
+  
+    {{service}}
+  
 
 </a></span> | <span><a href="/static/photos/contact.html">
-  {% get_flatpage "/pages/photography/contact/" %}
+  
+    {{contact}}
+  
 
 </a></span></div>
 </div>
@@ -58,8 +66,6 @@
 
   {% placeholder photo2 group=image tips="Design for photo2" width=216 height=168 %}
 
-  {% placeholder photo3 group=image tips="Design for photo3" width=216 height=168 %}
-
 </p>
 
 <p class="bodytext">
@@ -72,8 +78,28 @@
     <a href="#" target="_blank">photo2</a>
   </span>
 
+</p>
+
+  
+    
+
+
+<p class="bodytext">
+
+  {% placeholder photo3 group=image tips="Design for photo3" width=216 height=168 %}
+
+  {% placeholder photo4 group=image tips="Design for photo4" width=216 height=168 %}
+
+</p>
+
+<p class="bodytext">
+
   <span class="spantext">
     <a href="#" target="_blank">photo3</a>
+  </span>
+
+  <span class="spantext">
+    <a href="#" target="_blank">photo4</a>
   </span>
 
 </p>
@@ -84,8 +110,6 @@
 
 <p class="bodytext">
 
-  {% placeholder photo4 group=image tips="Design for photo4" width=216 height=168 %}
-
   {% placeholder photo5 group=image tips="Design for photo5" width=216 height=168 %}
 
   {% placeholder photo6 group=image tips="Design for photo6" width=216 height=168 %}
@@ -93,10 +117,6 @@
 </p>
 
 <p class="bodytext">
-
-  <span class="spantext">
-    <a href="#" target="_blank">photo4</a>
-  </span>
 
   <span class="spantext">
     <a href="#" target="_blank">photo5</a>

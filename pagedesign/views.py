@@ -60,7 +60,7 @@ class MasterPageSelectWizard( SessionWizardView ):
             picture_rows.append( picture_cols )
         
 
-        template = render_to_string( self.base_template_name, Context( { 'picture_rows': picture_rows } ) )
+        template = render_to_string( self.base_template_name, Context( { 'picture_rows': picture_rows, 'template': 1 } ) )
         template =  mark_safe( template )
         
         #prepare template_name

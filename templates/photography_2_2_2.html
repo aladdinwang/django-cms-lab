@@ -3,12 +3,11 @@
 
 
 
-  
-    {% load cms_tags %}
+  {% load cms_tags %}
 {% load flatpages %}
 {% load staticfiles %}
 {% load i18n %}
-  
+
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25,34 +24,22 @@
 <div id="header">
 <div id="headertitle"><span>Your Name</span><span class="boldtitle">Photography</span></div>
 <div id="links"><span><a href="{ %static 'photos/index.html' %}">
-  
-    {{home}}
-  
+  {% get_flatpage "/pages/photography/home/" %}
 
 </a></span> | <span><a href="/static/photos/features.html">
-  
-    {{feature}}
-  
+  {% get_flatpage "/pages/photography/featured-pages/" %}
 
 </a></span> | <span><a href="/static/photos/photography.html">
-  
-    {{photography}}
-  
+  {% get_flatpage "/pages/photography/photography-link/" %}
 
 </a></span> | <span><a href="#">
-  
-    {{store}}
-  
+  {% get_flatpage "/pages/photography/store/" %}
 
 </a></span> | <span><a href="/static/photos/services.html">
-  
-    {{service}}
-  
+  {% get_flatpage "/pages/photography/service/" %}
 
 </a></span> | <span><a href="/static/photos/contact.html">
-  
-    {{contact}}
-  
+  {% get_flatpage "/pages/photography/contact/" %}
 
 </a></span></div>
 </div>
