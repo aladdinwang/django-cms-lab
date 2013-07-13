@@ -126,8 +126,6 @@ SECRET_KEY = 'guhfwxv3453mym=p$lipk4gchhr)c4g3(dj&$0eqk4=k((a!z='
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    #'demo.remote_urls.Loader',
-#     'django.template.loaders.eggs.Loader',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -169,8 +167,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join( PROJECT_PATH, "templates" ),
-    #os.path.join( PROJECT_PATH, "static/photos" ),
-    #os.path.join( PROJECT_PATH, "templates/news_print" ),
+    os.path.join( PROJECT_PATH, 'media/templates' ),
 )
 
 CMS_TEMPLATES = (

@@ -1,8 +1,9 @@
 # Create your views here.
 from utils.conf import update_tuple_list
 
+from cms.models import CMS_Template
 from cms.utils.conf import get_extend_cfg, get_cms_templates
-#from cms.models import Page
+
 from pagedesign.forms import MasterPageSelectForm, RowsInfoForm
 
 from django.http import HttpResponse
@@ -72,12 +73,12 @@ class MasterPageSelectWizard( SessionWizardView ):
         
         templates_dir = os.path.join( settings.PROJECT_PATH, 'templates')
         template_path = os.path.join( templates_dir, template_name )
-        print template_path
-        
+  
+        """
         fp = open( template_path + '.html', 'w' )
         fp.write( template )
         fp.close()
-
+        """
         # setting the config file
         config = get_extend_cfg()
         cms_templates = unrepr( config[ 'CMS_TEMPLATES' ] )
@@ -87,6 +88,32 @@ class MasterPageSelectWizard( SessionWizardView ):
         config.write()
 
         page_addview_url = reverse('admin:cms_page_add')
+        #Todo: generate the template and insert value to database
+        template_upload_root = 'media/templates'
+        filename = cleaned_data[ 'filename' ]
+        filename = os.path.join( template_upload_root, filename + '.html' )
+        full_path = os.path.join( settings.PROJECT_PATH, filename )
+        
+  
+
+        cms_templates = CMS_Template.objects.filter( cms_template = filename )
+        
+        cms_template = None
+        if not len(cms_templates):
+            cms_template = CMS_Template(name = cleaned_data[ 'filename' ], cms_template = filename )
+        else:
+            cms_template = cms_templates[0]
+        if os.path.exists( full_path ):
+            print "Already exists"
+        
+        fp = open( full_path, 'w' )
+        fp.write( template )
+        fp.close()
+        
+        cms_template.save()
+        
+        #Todo: auto selected the new added template
+
         return HttpResponseRedirect( page_addview_url  )
     def get_form( self, step = None, data = None, files = None ):
         if '1' == step:
