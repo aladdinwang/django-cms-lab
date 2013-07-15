@@ -100,7 +100,7 @@ msgstr "总共有多少行"
 
 #: pagedesign/forms.py:23
 msgid "File Name"
-msgstr ""
+msgstr "文件名"
 
 #: pagedesign/forms.py:24
 msgid ""

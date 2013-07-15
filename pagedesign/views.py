@@ -90,31 +90,36 @@ class MasterPageSelectWizard( SessionWizardView ):
         page_addview_url = reverse('admin:cms_page_add')
         #Todo: generate the template and insert value to database
         template_upload_root = 'media/templates'
+        template_media_root = 'templates'
         filename = cleaned_data[ 'filename' ]
-        filename = os.path.join( template_upload_root, filename + '.html' )
+        
+        filename = os.path.join( template_upload_root, filename )
         full_path = os.path.join( settings.PROJECT_PATH, filename )
         
-  
-
-        cms_templates = CMS_Template.objects.filter( cms_template = filename )
-        
+        name = os.path.split( full_path )[1]
         cms_template = None
-        if not len(cms_templates):
-            cms_template = CMS_Template(name = cleaned_data[ 'filename' ], cms_template = filename )
+        try:
+            cms_template = CMS_Template.objects.get( name = name )
+        except CMS_Template.DoesNotExist:
+            pass
+        
+        if not cms_template:
+            cms_template = CMS_Template(name = name,
+                                        cms_template = 'templates/' + cleaned_data[ 'filename' ] + '.html' )
         else:
-            cms_template = cms_templates[0]
+            print "Duplicate Name"
         if os.path.exists( full_path ):
             print "Already exists"
         
-        fp = open( full_path, 'w' )
+        fp = open( full_path + '.html', 'w' )
         fp.write( template )
         fp.close()
         
         cms_template.save()
         
         #Todo: auto selected the new added template
-
-        return HttpResponseRedirect( page_addview_url  )
+        attrs = '?template=' + unicode(cms_template.name)
+        return HttpResponseRedirect( page_addview_url  + attrs)
     def get_form( self, step = None, data = None, files = None ):
         if '1' == step:
             raw_data = self.storage.get_step_data( '0' )
@@ -125,11 +130,19 @@ class MasterPageSelectWizard( SessionWizardView ):
                 form.fields['wrongfield'] = forms.CharField( label = 'Something wrong' )
             else:
                 form_class = RowsInfoForm
-                form_class.base_fields.clear()
+                new_basefields = {
+                    'filename': form_class.base_fields['filename'],
+                }
+                
                 for i in range( 1, count + 1 ):
                     name = 'row' + str( i )
                     label = 'Row ' + str( i )
-                    form_class.base_fields[name] = forms.ChoiceField( label = label, choices = MasterPageSelectWizard.picture_row_snippet_choices )
+                    if form_class.base_fields.has_key( name ):
+                        new_basefields[ name ] = form_class.base_fields[ name ]
+                    else:
+                        new_basefields[ name ] = forms.ChoiceField( label = label, choices = MasterPageSelectWizard.picture_row_snippet_choices )
+                form_class.base_fields.clear()
+                form_class.base_fields.update( new_basefields )
                 self.form_list['1'] = form_class
 
         form = super( MasterPageSelectWizard, self ).get_form( step, data, files )

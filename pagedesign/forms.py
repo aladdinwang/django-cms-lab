@@ -20,7 +20,11 @@ class MasterPageSelectForm( forms.Form ):
 
 
 class RowsInfoForm( forms.Form ):
+    filename = forms.CharField( label = _('File Name'),
+                                help_text = _('The filename relative to templates root.<br />'
+                                              'example: "subdir/example.html"') )
     pass
+
 
 
 
